@@ -102,7 +102,6 @@ body {
   border-top-color: #4f46e5;
   border-radius: 50%;
   margin: 10px 0;
-  animation: spin 0.8s linear infinite;
 }
 .hidden {
   display: none;
@@ -171,4 +170,178 @@ body {
 
 .loader.active {
   display: block;
+}
+
+/* Контейнер сторінки */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 16px;
+}
+
+/* Центрований пошук у один рядок */
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  max-width: 720px;
+  width: 100%;
+  margin: 0 auto 24px;
+}
+
+.form input[type='text'] {
+  flex: 1;
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+}
+
+.form button {
+  height: 40px;
+  padding: 0 16px;
+  border: none;
+  border-radius: 8px;
+  background: #5869ff;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Прибрати заголовок, якщо він лишився в DOM */
+.page-title {
+  display: none;
+}
+
+/* Лоадер по центру і в один рядок */
+.loader {
+  text-align: center;
+  margin: 8px 0 24px;
+  color: #555;
+  font-size: 16px;
+}
+.loader span {
+  white-space: nowrap; /* ключ, щоб не переносилось */
+}
+.hidden {
+  display: none;
+}
+
+/* Сітка галереї (щоб нічого не наїжджало) */
+.gallery {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.gallery-item {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  background: #fff;
+}
+
+.gallery-link {
+  display: block;
+  text-decoration: none;
+}
+
+.gallery-image {
+  display: block;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+/* Панель з метриками під фото */
+.meta {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px 12px;
+  padding: 10px 14px 12px;
+  font-size: 14px;
+}
+.meta b {
+  display: block;
+}
+
+/* Центруємо форму зверху */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+.form {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* === Loader === */
+.loader {
+  /* перекриває всю сторінку і центрує вміст */
+  position: fixed;
+  inset: 0; /* top:0; right:0; bottom:0; left:0 */
+  display: none; /* прихований за замовчуванням */
+  align-items: center; /* вертикальне центрування */
+  justify-content: center; /* горизонтальне центрування */
+  z-index: 1000;
+  pointer-events: none; /* щоб не блокував кліки по сторінці */
+  background: transparent; /* без затемнення, як на макеті */
+}
+
+.loader.active {
+  display: flex;
+}
+
+.loader-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #6366f1; /* фіолетова крапка */
+  margin-right: 10px;
+  /* БЕЗ анімацій — нічого не крутиться */
+}
+
+.loader-text {
+  font-size: 16px;
+  color: #374151;
+  white-space: nowrap; /* щоб рядок не переносився */
+}
+
+/* Центрований лоадер поверх сторінки */
+.page-loader {
+  position: fixed !important;
+  inset: 0 !important; /* top/right/bottom/left:0 */
+  z-index: 9999;
+  display: none; /* прихований за замовчуванням */
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  background: transparent;
+}
+
+.page-loader.active {
+  display: flex;
+}
+
+.page-loader__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #6366f1;
+  margin-right: 10px;
+  /* без анімацій */
+  animation: none !important;
+}
+
+.page-loader__text {
+  font-size: 16px;
+  color: #374151;
+  white-space: nowrap; /* один рядок */
 }

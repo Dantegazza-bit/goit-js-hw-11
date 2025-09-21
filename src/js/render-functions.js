@@ -37,8 +37,10 @@ export function clearGallery() {
 
 export function showLoader() {
   loader.classList.add('active');
+  loader.setAttribute('aria-hidden', 'false');
 }
 
 export function hideLoader() {
   loader.classList.remove('active');
+  loader.setAttribute('aria-hidden', 'true');
 }

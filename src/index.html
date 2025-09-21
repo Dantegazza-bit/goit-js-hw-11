@@ -8,8 +8,6 @@
   </head>
   <body>
     <main class="container">
-      <h1 class="page-title">Pixabay search</h1>
-
       <form class="form" autocomplete="off">
         <label>
           <input
@@ -23,8 +21,9 @@
       </form>
 
       <!-- індикатор завантаження -->
-      <div id="loader" class="loader hidden" aria-hidden="true">
-        Loading images, please wait...
+      <div id="loader" class="loader" aria-hidden="true">
+        <span class="loader-dot"></span>
+        <span class="loader-text">Loading images, please wait...</span>
       </div>
 
       <!-- галерея -->
