@@ -282,66 +282,23 @@ body {
   gap: 12px;
 }
 
-/* === Loader === */
-.loader {
-  /* перекриває всю сторінку і центрує вміст */
-  position: fixed;
-  inset: 0; /* top:0; right:0; bottom:0; left:0 */
-  display: none; /* прихований за замовчуванням */
-  align-items: center; /* вертикальне центрування */
-  justify-content: center; /* горизонтальне центрування */
-  z-index: 1000;
-  pointer-events: none; /* щоб не блокував кліки по сторінці */
-  background: transparent; /* без затемнення, як на макеті */
-}
-
-.loader.active {
-  display: flex;
-}
-
-.loader-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: #6366f1; /* фіолетова крапка */
-  margin-right: 10px;
-  /* БЕЗ анімацій — нічого не крутиться */
-}
-
-.loader-text {
-  font-size: 16px;
+/* Лоадер під полем пошуку */
+#page-loader {
+  display: none;
+  margin-top: 80px; /* тут регулюєш відстань */
+  text-align: center;
+  font-size: 30px;
   color: #374151;
-  white-space: nowrap; /* щоб рядок не переносився */
+  white-space: nowrap;
 }
 
-/* Центрований лоадер поверх сторінки */
-.page-loader {
-  position: fixed !important;
-  inset: 0 !important; /* top/right/bottom/left:0 */
-  z-index: 9999;
-  display: none; /* прихований за замовчуванням */
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-  background: transparent;
+/* Коли активний */
+#page-loader.active {
+  display: block;
 }
 
-.page-loader.active {
-  display: flex;
-}
-
-.page-loader__dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: #6366f1;
-  margin-right: 10px;
-  /* без анімацій */
-  animation: none !important;
-}
-
+/* Текст */
 .page-loader__text {
-  font-size: 16px;
-  color: #374151;
-  white-space: nowrap; /* один рядок */
+  display: inline-block;
+  vertical-align: middle;
 }
