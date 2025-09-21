@@ -1,3 +1,4 @@
+// main.js
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
@@ -10,28 +11,19 @@ import {
 } from './render-functions.js';
 
 const form = document.querySelector('.form');
-const input = form.querySelector('[name="search-text"]');
+const input = form.elements['search-text'];
 
 form.addEventListener('submit', async e => {
   e.preventDefault();
 
-  const query = (input.value ?? '').trim();
-  if (!query) {
-    iziToast.info({
-      message: 'Please enter a search term',
-      position: 'topRight',
-    });
-    return;
-  }
+  const query = input.value.trim();
+  if (!query) return;
 
   clearGallery();
   showLoader();
 
   try {
-    const data = await getImagesByQuery(query);
-
-    // API повертає { total, totalHits, hits: [...] }
-    const { hits } = data;
+    const { hits } = await getImagesByQuery(query);
 
     if (!Array.isArray(hits) || hits.length === 0) {
       iziToast.warning({
@@ -48,8 +40,6 @@ form.addEventListener('submit', async e => {
       message: 'Something went wrong. Please try again later.',
       position: 'topRight',
     });
-    // корисно пологувати у dev:
-    // console.error(err);
   } finally {
     hideLoader();
   }
