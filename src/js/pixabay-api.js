@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_KEY = 'YOUR_PIXABAY_API_KEY'; // ← встав свій ключ
+const API_KEY = '52390417-1bf501a7c6f4bb07aa1949c3b'; // ← встав свій ключ
 const instance = axios.create({
   baseURL: 'https://pixabay.com/api/',
   params: {
