@@ -1,9 +1,10 @@
-// render-functions.js
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
-const galleryEl = document.querySelector('#gallery');
-const lightbox = new SimpleLightbox('.gallery a', {
+const gallery = document.querySelector('#gallery');
+const loader = document.querySelector('#loader');
+
+let lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
   captionDelay: 250,
 });
@@ -11,41 +12,33 @@ const lightbox = new SimpleLightbox('.gallery a', {
 export function createGallery(images) {
   const markup = images
     .map(
-      ({
-        webformatURL,
-        largeImageURL,
-        tags,
-        likes,
-        views,
-        comments,
-        downloads,
-      }) => `
+      img => `
       <li class="gallery-item">
-        <a class="gallery-link" href="${largeImageURL}">
-          <img class="gallery-image" src="${webformatURL}" alt="${tags}" />
+        <a class="gallery-link" href="${img.largeImageURL}">
+          <img class="gallery-image" src="${img.webformatURL}" alt="${img.tags}" />
         </a>
-        <ul class="info">
-          <li><b>Likes:</b> ${likes}</li>
-          <li><b>Views:</b> ${views}</li>
-          <li><b>Comments:</b> ${comments}</li>
-          <li><b>Downloads:</b> ${downloads}</li>
-        </ul>
+        <div class="gallery-info">
+          <div class="gallery-info-item"><b>Likes</b> ${img.likes}</div>
+          <div class="gallery-info-item"><b>Views</b> ${img.views}</div>
+          <div class="gallery-info-item"><b>Comments</b> ${img.comments}</div>
+          <div class="gallery-info-item"><b>Downloads</b> ${img.downloads}</div>
+        </div>
       </li>`
     )
     .join('');
 
-  galleryEl.insertAdjacentHTML('beforeend', markup);
+  gallery.innerHTML = markup;
   lightbox.refresh();
 }
 
 export function clearGallery() {
-  galleryEl.innerHTML = '';
+  gallery.innerHTML = '';
 }
 
 export function showLoader() {
-  document.querySelector('#loader')?.classList.remove('hidden');
+  loader.classList.add('active');
 }
 
 export function hideLoader() {
-  document.querySelector('#loader')?.classList.add('hidden');
+  loader.classList.remove('active');
 }
